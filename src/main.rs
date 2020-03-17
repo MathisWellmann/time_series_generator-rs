@@ -1,6 +1,8 @@
 mod gaussian_process;
 mod sine_wave;
 mod step_function;
+mod plt;
+mod geometric_brownian_motion;
 
 fn main() {
     let length: usize = 1_000;
@@ -11,8 +13,6 @@ fn main() {
     let sf = step_function::step_function(length, length / 2, length / 10);
     println!("step_function: {:?}", sf);
 }
-
-mod plt;
 
 #[test]
 fn test_step_function() -> Result<(), Box<dyn std::error::Error>> {
@@ -39,4 +39,13 @@ fn test_sine_wave() -> Result<(), Box<dyn std::error::Error>> {
 
     let filename = "img/sine_wave.png";
     plt::plt(sw, filename)
+}
+
+#[test]
+fn test_geometric_brownian_motion() ->Result<(), Box<dyn std::error::Error>> {
+    let vals = geometric_brownian_motion::geometric_brownian_motion(100.0, 1.5 / 365.0, 3_000, 0.15, 0.5);
+
+    println!("vals: {:?}", vals);
+    let filename = "img/geometric_brownian_motion.png";
+    plt::plt(vals, filename)
 }
