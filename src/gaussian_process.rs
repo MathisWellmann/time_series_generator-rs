@@ -16,9 +16,8 @@ fn rand_gaussian_pct() -> f64 {
 }
 
 // gaussian_prcess return gaussian sampled random values of given length
-pub fn gaussian_process(length: usize, start_value: f64) -> Vec<f64> {
+pub fn gen(length: usize, start_value: f64) -> Vec<f64> {
     let mut out= vec![0.0; length];
-
 
     out[0] = start_value;
     for i in 1..length {
@@ -28,4 +27,13 @@ pub fn gaussian_process(length: usize, start_value: f64) -> Vec<f64> {
     };
 
     return out
+}
+
+#[test]
+fn test_gaussian_process() -> Result<(), Box<dyn std::error::Error>> {
+    let gp = gaussian_process::gaussian_process(1000, 1000.0);
+    println!("gaussian_process: {:?}", gp);
+
+    let filename = "img/gaussian_process.png";
+    plt::plt(gp, filename)
 }

@@ -11,3 +11,12 @@ pub fn step_function(length: usize, mid_point: usize, width: usize) -> Vec<f64> 
     }
     return out
 }
+
+#[test]
+fn test_step_function() -> Result<(), Box<dyn std::error::Error>> {
+    let sf = step_function::step_function(1000, 500, 100);
+    println!("sf: {:?}", sf);
+
+    let filename = "img/step_function.png";
+    plt::plt(sf, filename)
+}

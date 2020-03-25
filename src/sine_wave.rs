@@ -6,3 +6,12 @@ pub fn sine_wave(length: usize) -> Vec<f64> {
     }
     return out
 }
+
+#[test]
+fn test_sine_wave() -> Result<(), Box<dyn std::error::Error>> {
+    let sw = sine_wave::sine_wave(1024);
+    println!("sine_wave: {:?}", sw);
+
+    let filename = "img/sine_wave.png";
+    plt::plt(sw, filename)
+}
