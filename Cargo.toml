@@ -21,7 +21,6 @@ categories = [
 ]
 exclude = [
     "img/",
-    "agplv3.png",
 ]
 
 [dependencies]
