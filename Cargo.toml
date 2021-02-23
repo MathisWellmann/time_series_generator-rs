@@ -20,7 +20,8 @@ categories = [
     "simulation",
 ]
 exclude = [
-    "img/"
+    "img/",
+    "agplv3.png",
 ]
 
 [dependencies]

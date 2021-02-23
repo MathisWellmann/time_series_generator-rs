@@ -10,15 +10,27 @@ See [MathisWellmann/go_timeseries_generator](https://github.com/MathisWellmann/g
 - Sine wave function
 - Step function
 
+## How to Use
+To include this crate in your project, add the following to your Cargo.toml:
+
+```toml
+[dependencies]
+time-series-generator = "0.2"
+```
+
 ### Images:
 
 ![standard_normal](img/standard_normal.png)
+
 ![geometric_brownian_motion](img/geometric_brownian_motion.png)
+
 ![sine_wave](img/sine_wave.png)
+
 ![step_function](img/step_function.png)
 
 ### Tests
 To generate the test images presented in this README, run them using:
+
 ```shell_scipt
 cargo test
 ```
@@ -53,4 +65,4 @@ GNU Affero General Public License for more details.
 You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-![GNU AGPLv3](agplv3.png)
+![GNU AGPLv3](img/agplv3.png)
