@@ -1,5 +1,5 @@
-// step_function returns a vector of given length with step function with mid_point and width
-pub fn step_function(length: usize, mid_point: usize, width: usize) -> Vec<f64> {
+/// Generates a vector of given length with step function using mid_point and width parameter
+pub fn generate_step_function(length: usize, mid_point: usize, width: usize) -> Vec<f64> {
     let mut out = vec![0.0; length];
 
     for i in 0..length {
@@ -9,14 +9,19 @@ pub fn step_function(length: usize, mid_point: usize, width: usize) -> Vec<f64> 
         }
         out[i] = 1.0;
     }
-    return out
+    return out;
 }
 
-#[test]
-fn test_step_function() -> Result<(), Box<dyn std::error::Error>> {
-    let sf = step_function::step_function(1000, 500, 100);
-    println!("sf: {:?}", sf);
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::plot_values;
 
-    let filename = "img/step_function.png";
-    plt::plt(sf, filename)
+    #[test]
+    fn step_function_plot() -> Result<(), Box<dyn std::error::Error>> {
+        let sf = generate_step_function(1000, 500, 100);
+
+        let filename = "img/step_function.png";
+        plot_values(sf, filename)
+    }
 }

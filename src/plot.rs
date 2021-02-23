@@ -1,6 +1,6 @@
 use plotters::prelude::*;
 
-// prepare_vec returns a 2d vector suitable for plotting and also min, max values of input vector
+/// prepare_vec returns a 2d vector suitable for plotting and also min, max values of input vector
 fn prepare_vec(vals: Vec<f64>) -> (Vec<(f64, f64)>, f64, f64) {
     let mut out = vec![(0.0, 0.0); vals.len()];
     let mut min = vals[0];
@@ -14,17 +14,22 @@ fn prepare_vec(vals: Vec<f64>) -> (Vec<(f64, f64)>, f64, f64) {
             min = vals[i]
         }
     }
-    return (out, min, max)
+    return (out, min, max);
 }
 
-pub fn plt(vals: Vec<f64>, filename: &str) -> Result<(), Box<dyn std::error::Error>> {
+/// Plots the given values in a single plot to filename
+/// returns an Error if there has been an error
+/// Used for graphing the timeseries
+pub(crate) fn plot_values(
+    vals: Vec<f64>,
+    filename: &str,
+) -> Result<(), Box<dyn std::error::Error>> {
     let (vec2d, min, max) = prepare_vec(vals);
 
-    // plot the resulting function
     let root = BitMapBackend::new(filename, (640, 480)).into_drawing_area();
     root.fill(&WHITE)?;
     let mut chart = ChartBuilder::on(&root)
-        .caption(filename, ("sans-serif", 50).into_font())
+        .caption(filename, ("sans-serif", 30).into_font())
         .margin(5)
         .x_label_area_size(30)
         .y_label_area_size(30)
