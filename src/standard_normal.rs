@@ -17,7 +17,7 @@ pub fn generate_standard_normal(length: usize, start_value: f64) -> Vec<f64> {
         last_val = *v;
     }
 
-    return out;
+    out
 }
 
 #[cfg(test)]

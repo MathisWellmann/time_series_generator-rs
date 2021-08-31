@@ -2,14 +2,15 @@
 pub fn generate_step_function(length: usize, mid_point: usize, width: usize) -> Vec<f64> {
     let mut out = vec![0.0; length];
 
-    for i in 0..length {
+    for (i, val) in out.iter_mut().enumerate() {
         if i < mid_point - width || i > mid_point + width {
-            out[i] = 0.0;
-            continue;
+            *val = 0.0;
+        } else {
+            *val = 1.0;
         }
-        out[i] = 1.0;
     }
-    return out;
+
+    out
 }
 
 #[cfg(test)]

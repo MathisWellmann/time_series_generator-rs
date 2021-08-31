@@ -9,6 +9,7 @@ See [MathisWellmann/go_timeseries_generator](https://github.com/MathisWellmann/g
 - Gaussian process (Standard Normal)
 - Sine wave function
 - Step function
+- Triangle wave
 
 ## How to Use
 To include this crate in your project, add the following to your Cargo.toml:
@@ -27,6 +28,8 @@ time-series-generator = "0.2"
 ![sine_wave](img/sine_wave.png)
 
 ![step_function](img/step_function.png)
+
+![triangle_wave](img/triangle_wave.png)
 
 ### Tests
 To generate the test images presented in this README, run them using:

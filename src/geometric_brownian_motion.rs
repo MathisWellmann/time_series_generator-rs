@@ -29,13 +29,7 @@ mod tests {
 
     #[test]
     fn geometric_brownian_motion_plot() -> Result<(), Box<dyn std::error::Error>> {
-        let vals = generate_geometric_brownian_motion(
-            100.0,
-            1.5 / 365.0,
-            256,
-            0.15,
-            0.5
-        );
+        let vals = generate_geometric_brownian_motion(100.0, 1.5 / 365.0, 256, 0.15, 0.5);
 
         let filename = "img/geometric_brownian_motion.png";
         plot_values(vals, filename)
