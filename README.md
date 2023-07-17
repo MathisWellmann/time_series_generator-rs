@@ -16,7 +16,7 @@ To include this crate in your project, add the following to your Cargo.toml:
 
 ```toml
 [dependencies]
-time-series-generator = "0.2"
+time-series-generator = "0.3.1"
 ```
 
 ### Images:
@@ -24,6 +24,8 @@ time-series-generator = "0.2"
 ![standard_normal](img/standard_normal.png)
 
 ![geometric_brownian_motion](img/geometric_brownian_motion.png)
+
+![mackey_glass](img/mackey_glass.png)
 
 ![sine_wave](img/sine_wave.png)
 
