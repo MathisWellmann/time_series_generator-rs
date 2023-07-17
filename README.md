@@ -6,6 +6,7 @@ See [MathisWellmann/go_timeseries_generator](https://github.com/MathisWellmann/g
 
 ## Features:
 - Geometric brownian motion
+- Mackey Glass
 - Gaussian process (Standard Normal)
 - Sine wave function
 - Step function
@@ -20,12 +21,11 @@ time-series-generator = "0.3.1"
 ```
 
 ### Images:
+![mackey_glass](img/mackey_glass.png)
 
 ![standard_normal](img/standard_normal.png)
 
 ![geometric_brownian_motion](img/geometric_brownian_motion.png)
-
-![mackey_glass](img/mackey_glass.png)
 
 ![sine_wave](img/sine_wave.png)
 
