@@ -26,6 +26,8 @@ time-series-generator = "0.3.2"
 
 ![lorenz_system](img/lorenz_system_3d.png)
 
+![lorenz_system_x](img/lorenz_system_x.png)
+
 ![standard_normal](img/standard_normal.png)
 
 ![geometric_brownian_motion](img/geometric_brownian_motion.png)

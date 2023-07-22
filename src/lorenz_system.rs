@@ -1,6 +1,8 @@
 use num_traits::Float;
 
 /// Generate a lorenz system in 3D space.
+/// Note that it is advised to discard the first part of this series
+/// as the points are still in the transient phase.
 ///
 /// # Arguments:
 /// `sigma`: Lorenz uses 10.0
@@ -40,7 +42,8 @@ pub fn lorenz_system<T: Float>(
 
 #[cfg(test)]
 mod test {
-    use crate::plot::{plot_3d, Series3D};
+
+    use crate::plot::{plot_2d, plot_3d, Series3D};
 
     use super::*;
 
@@ -50,5 +53,16 @@ mod test {
         println!("series: {series:?}");
 
         plot_3d(&Series3D(series), "img/lorenz_system_3d.png", (1024, 1024)).unwrap();
+    }
+
+    #[test]
+    fn plot_lorenz_system_2d() {
+        // TODO: bump version to 2021 (But its a major release)
+        use std::iter::FromIterator;
+
+        let series = lorenz_system(10.0, 2.667, 28.0, 5000, 0.01);
+        let xs = Vec::from_iter(series.iter().map(|v| v.0));
+
+        plot_2d(xs, "img/lorenz_system_x.png").unwrap();
     }
 }
