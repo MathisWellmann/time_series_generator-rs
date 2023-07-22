@@ -7,6 +7,7 @@ use num_traits::Float;
 /// `beta`: Lorenz uses 8 / 3
 /// `rho`: Lorenz uses 28
 /// `sampling_len`: How many datapoints to return
+/// `dt`: How much to step the system forward at each time step. 0.01 is a good starting value.
 ///
 /// # Returns:
 /// Three vectors each describing a single variable of the state space.
