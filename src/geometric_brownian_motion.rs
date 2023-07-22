@@ -25,13 +25,13 @@ pub fn generate_geometric_brownian_motion(
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::plot_values;
+    use crate::plot::plot_2d;
 
     #[test]
     fn geometric_brownian_motion_plot() -> Result<(), Box<dyn std::error::Error>> {
         let vals = generate_geometric_brownian_motion(100.0, 1.5 / 365.0, 256, 0.15, 0.5);
 
         let filename = "img/geometric_brownian_motion.png";
-        plot_values(vals, filename)
+        plot_2d(vals, filename)
     }
 }

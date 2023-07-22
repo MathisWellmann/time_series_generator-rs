@@ -16,13 +16,13 @@ pub fn generate_step_function(length: usize, mid_point: usize, width: usize) -> 
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::plot_values;
+    use crate::plot_2d;
 
     #[test]
     fn step_function_plot() -> Result<(), Box<dyn std::error::Error>> {
         let sf = generate_step_function(1000, 500, 100);
 
         let filename = "img/step_function.png";
-        plot_values(sf, filename)
+        plot_2d(sf, filename)
     }
 }

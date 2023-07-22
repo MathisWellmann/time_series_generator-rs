@@ -12,13 +12,13 @@ pub fn generate_sine_wave(length: usize) -> Vec<f64> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::plot_values;
+    use crate::plot_2d;
 
     #[test]
     fn sine_wave_plot() -> Result<(), Box<dyn std::error::Error>> {
         let sine = generate_sine_wave(256);
 
         let filename = "img/sine_wave.png";
-        plot_values(sine, filename)
+        plot_2d(sine, filename)
     }
 }

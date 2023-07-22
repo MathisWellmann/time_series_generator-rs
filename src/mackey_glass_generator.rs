@@ -43,7 +43,7 @@ pub fn mackey_glass_series(sample_len: usize, tau: usize, seed: Option<u64>) -> 
 
 #[cfg(test)]
 mod tests {
-    use crate::plot::plot_values;
+    use crate::plot::plot_2d;
 
     use super::*;
 
@@ -52,6 +52,6 @@ mod tests {
         let series = mackey_glass_series(1000, 30, None);
 
         let filename = "./img/mackey_glass.png";
-        plot_values(series, filename).unwrap();
+        plot_2d(series, filename).unwrap();
     }
 }

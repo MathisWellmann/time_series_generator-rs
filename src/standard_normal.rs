@@ -23,13 +23,13 @@ pub fn generate_standard_normal(length: usize, start_value: f64) -> Vec<f64> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::plot_values;
+    use crate::plot_2d;
 
     #[test]
     fn generate_standard_normal_plot() -> Result<(), Box<dyn std::error::Error>> {
         let gp = generate_standard_normal(256, 100.0);
 
         let filename = "img/standard_normal.png";
-        plot_values(gp, filename)
+        plot_2d(gp, filename)
     }
 }

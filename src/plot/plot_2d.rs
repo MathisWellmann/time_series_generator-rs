@@ -20,10 +20,7 @@ fn prepare_vec(vals: Vec<f64>) -> (Vec<(f64, f64)>, f64, f64) {
 /// Plots the given values in a single plot to filename
 /// returns an Error if there has been an error
 /// Used for graphing the timeseries
-pub(crate) fn plot_values(
-    vals: Vec<f64>,
-    filename: &str,
-) -> Result<(), Box<dyn std::error::Error>> {
+pub(crate) fn plot_2d(vals: Vec<f64>, filename: &str) -> Result<(), Box<dyn std::error::Error>> {
     let (vec2d, min, max) = prepare_vec(vals);
 
     let root = BitMapBackend::new(filename, (640, 480)).into_drawing_area();

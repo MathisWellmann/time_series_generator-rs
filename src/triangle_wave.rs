@@ -20,13 +20,13 @@ pub fn generate_triangle_wave(length: usize) -> Vec<f64> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::plot_values;
+    use crate::plot_2d;
 
     #[test]
     fn triangle_wave_plot() {
         let trg = generate_triangle_wave(256);
 
         let filename = "img/triangle_wave.png";
-        plot_values(trg, filename).unwrap();
+        plot_2d(trg, filename).unwrap();
     }
 }

@@ -23,6 +23,8 @@ time-series-generator = "0.3.1"
 ### Images:
 ![mackey_glass](img/mackey_glass.png)
 
+![lorenz_system](img/lorenz_system_3d.png)
+
 ![standard_normal](img/standard_normal.png)
 
 ![geometric_brownian_motion](img/geometric_brownian_motion.png)
