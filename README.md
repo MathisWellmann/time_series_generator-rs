@@ -7,6 +7,7 @@ See [MathisWellmann/go_timeseries_generator](https://github.com/MathisWellmann/g
 ## Features:
 - Geometric brownian motion
 - Mackey Glass
+- Lorenz system
 - Gaussian process (Standard Normal)
 - Sine wave function
 - Step function
@@ -17,7 +18,7 @@ To include this crate in your project, add the following to your Cargo.toml:
 
 ```toml
 [dependencies]
-time-series-generator = "0.3.1"
+time-series-generator = "0.3.2"
 ```
 
 ### Images:
