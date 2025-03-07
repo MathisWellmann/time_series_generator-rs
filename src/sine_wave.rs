@@ -1,9 +1,15 @@
+use num_traits::Float;
+
 /// Generates a new sine wave function of given length with exactly one period
-pub fn generate_sine_wave(length: usize) -> Vec<f64> {
-    let mut out = vec![0.0; length];
+pub fn generate_sine_wave<T: Float>(length: usize) -> Vec<T> {
+    let mut out = vec![T::zero(); length];
 
     for (i, val) in out.iter_mut().enumerate() {
-        *val = 0.99 * ((i as f64 / length as f64) * 2.0 * std::f64::consts::PI).sin()
+        *val = T::from(0.99).expect("Can convert")
+            * ((T::from(i).expect("Can convert") / T::from(length).expect("Can convert"))
+                * T::from(2.0).expect("Can convert")
+                * T::from(std::f64::consts::PI).expect("Can convert"))
+            .sin()
     }
 
     out
