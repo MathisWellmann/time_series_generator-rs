@@ -8,8 +8,8 @@ pub fn generate_geometric_brownian_motion(
     drift: f64,
     diffusion: f64,
 ) -> Vec<f64> {
-    let mut rng = rand::thread_rng();
-    let dist = Normal::new(0.0, 1.0).unwrap();
+    let mut rng = rand::rng();
+    let dist = Normal::new(0.0, 1.0).expect("Is valid distribution");
     let mut v = Vec::<f64>::with_capacity(length);
     v.push(s_0);
     let drift_factor = 1.0 + drift * dt;
