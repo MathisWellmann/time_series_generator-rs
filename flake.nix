@@ -36,6 +36,7 @@
               taplo
               fontconfig
               pkg-config
+              mprocs
             ];
           };
         }
