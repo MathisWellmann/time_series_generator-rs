@@ -1,5 +1,3 @@
-#![deny(missing_docs, rustdoc::missing_crate_level_docs)]
-
 //! The timeseries-generator crate for generating various timeseries
 
 mod geometric_brownian_motion;

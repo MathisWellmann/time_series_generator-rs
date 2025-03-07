@@ -11,10 +11,17 @@ keywords = ["generator", "timeseries", "random", "sampled"]
 categories = ["algorithms", "mathematics", "science", "simulation"]
 exclude = ["img/"]
 
+[lints.rust]
+unused_imports = "deny"
+missing_docs = "deny"
+dead_code = "deny"
+
+[lints.rustdoc]
+missing_crate_level_docs = "deny"
+
 [dependencies]
 rand = "0.9"
 rand_distr = "0.5"
-nanorand = "0.7"
 num-traits = "0.2"
 
 [dev-dependencies]
