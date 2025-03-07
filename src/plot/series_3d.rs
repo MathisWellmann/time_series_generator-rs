@@ -1,5 +1,5 @@
 /// Return the minimum of two values
-#[inline]
+#[inline(always)]
 pub(crate) fn min<T: PartialOrd>(v0: T, v1: T) -> T {
     if v0 < v1 {
         v0
@@ -9,7 +9,7 @@ pub(crate) fn min<T: PartialOrd>(v0: T, v1: T) -> T {
 }
 
 /// Return the maximum of two values
-#[inline]
+#[inline(always)]
 pub(crate) fn max<T: PartialOrd>(v0: T, v1: T) -> T {
     if v0 > v1 {
         v0
@@ -18,6 +18,7 @@ pub(crate) fn max<T: PartialOrd>(v0: T, v1: T) -> T {
     }
 }
 
+/// Contains a three dimensional series of points.
 #[derive(Default, Debug, Clone)]
 pub(crate) struct Series3D(pub Vec<(f64, f64, f64)>);
 
@@ -69,15 +70,5 @@ impl Series3D {
     #[inline(always)]
     pub(crate) fn inner(self) -> Vec<(f64, f64, f64)> {
         self.0
-    }
-
-    #[inline(always)]
-    pub(crate) fn is_empty(&self) -> bool {
-        self.0.is_empty()
-    }
-
-    #[inline(always)]
-    pub(crate) fn len(&self) -> usize {
-        self.0.len()
     }
 }

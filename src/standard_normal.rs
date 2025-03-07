@@ -1,4 +1,4 @@
-use rand::prelude::*;
+use rand::{prelude::*, rng};
 use rand_distr::StandardNormal;
 
 /// generate a new randomly sampled timeseries of given length
@@ -7,7 +7,7 @@ use rand_distr::StandardNormal;
 pub fn generate_standard_normal(length: usize, start_value: f64) -> Vec<f64> {
     let mut out: Vec<f64> = vec![0.0; length];
 
-    let mut rng = thread_rng();
+    let mut rng = rng();
 
     out.push(start_value);
     let mut last_val: f64 = start_value;
