@@ -18,7 +18,7 @@ To include this crate in your project, add the following to your Cargo.toml:
 
 ```toml
 [dependencies]
-time-series-generator = "0.3.2"
+time-series-generator = "0.4"
 ```
 
 ### Images:
