@@ -1,13 +1,11 @@
-use rand::{prelude::*, rng};
+use rand::prelude::*;
 use rand_distr::StandardNormal;
 
 /// generate a new randomly sampled timeseries of given length
 /// using a standard normal distribution scaled down by 100
 /// by multiplying a random (+/-) value with the previous value
-pub fn generate_standard_normal(length: usize, start_value: f64) -> Vec<f64> {
+pub fn generate_standard_normal<R: Rng>(rng: &mut R, length: usize, start_value: f64) -> Vec<f64> {
     let mut out: Vec<f64> = vec![0.0; length];
-
-    let mut rng = rng();
 
     out.push(start_value);
     let mut last_val: f64 = start_value;
@@ -27,7 +25,8 @@ mod tests {
 
     #[test]
     fn generate_standard_normal_plot() -> Result<(), Box<dyn std::error::Error>> {
-        let gp = generate_standard_normal(256, 100.0);
+        let mut rng = SmallRng::seed_from_u64(0);
+        let gp = generate_standard_normal(&mut rng, 256, 100.0);
 
         let filename = "img/standard_normal.png";
         plot_2d(gp, filename)

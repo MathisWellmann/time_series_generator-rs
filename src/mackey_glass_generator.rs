@@ -1,6 +1,6 @@
 use std::collections::VecDeque;
 
-use nanorand::{Rng, WyRand};
+use rand::Rng;
 
 /// Mackey glass series generation
 ///
@@ -8,18 +8,14 @@ use nanorand::{Rng, WyRand};
 /// `sample_len`: the number of datapoints to generate
 /// `tau`: roughly correlates to the chaotic and complex behaviour of the sequence
 /// `seed`: An optional seed for the random number generator
-pub fn mackey_glass_series(sample_len: usize, tau: usize, seed: Option<u64>) -> Vec<f64> {
+pub fn mackey_glass_series<R: Rng>(rng: &mut R, sample_len: usize, tau: usize) -> Vec<f64> {
     let delta_t = 10;
     let mut timeseries = 1.2;
     let history_len = tau * delta_t;
 
-    let mut rng = match seed {
-        Some(seed) => WyRand::new_seed(seed),
-        None => WyRand::new(),
-    };
     let mut history = VecDeque::with_capacity(history_len);
     for _i in 0..history_len {
-        let val = 1.2 + 0.2 * (rng.generate::<f64>() - 0.5);
+        let val = 1.2 + 0.2 * (rng.random::<f64>() - 0.5);
         history.push_back(val);
     }
 
@@ -43,13 +39,16 @@ pub fn mackey_glass_series(sample_len: usize, tau: usize, seed: Option<u64>) -> 
 
 #[cfg(test)]
 mod tests {
+    use rand::{rngs::SmallRng, SeedableRng};
+
     use crate::plot::plot_2d;
 
     use super::*;
 
     #[test]
     fn plot_mackey_glass() {
-        let series = mackey_glass_series(1000, 30, None);
+        let mut rng = SmallRng::seed_from_u64(0);
+        let series = mackey_glass_series(&mut rng, 1000, 30);
 
         let filename = "./img/mackey_glass.png";
         plot_2d(series, filename).unwrap();
