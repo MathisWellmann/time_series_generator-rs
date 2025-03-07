@@ -1,23 +1,29 @@
+use num_traits::Float;
 use rand::Rng;
-use rand_distr::{Distribution, Normal};
+use rand_distr::{Distribution, Normal, StandardNormal};
 
 /// Generate geometric brownian motion
-pub fn generate_geometric_brownian_motion<R: Rng>(
+pub fn generate_geometric_brownian_motion<R, T>(
     rng: &mut R,
-    s_0: f64,
-    dt: f64,
+    s_0: T,
+    dt: T,
     length: usize,
-    drift: f64,
-    diffusion: f64,
-) -> Vec<f64> {
-    let dist = Normal::new(0.0, 1.0).expect("Is valid distribution");
-    let mut v = Vec::<f64>::with_capacity(length);
+    drift: T,
+    diffusion: T,
+) -> Vec<T>
+where
+    R: Rng,
+    T: Float,
+    StandardNormal: rand_distr::Distribution<T>,
+{
+    let dist = Normal::<T>::new(T::zero(), T::one()).expect("Is valid distribution");
+    let mut v = Vec::<T>::with_capacity(length);
     v.push(s_0);
-    let drift_factor = 1.0 + drift * dt;
+    let drift_factor = T::one() + drift * dt;
     let diffusion_factor = diffusion * dt.sqrt();
     for idx in 1..length {
         let rv = drift_factor + diffusion_factor * dist.sample(rng);
-        let prod: f64 = rv * v[idx - 1];
+        let prod: T = rv * v[idx - 1];
         v.push(prod);
     }
     v
