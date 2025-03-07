@@ -1,17 +1,23 @@
+use num_traits::Float;
 use rand::prelude::*;
 use rand_distr::StandardNormal;
 
 /// generate a new randomly sampled timeseries of given length
 /// using a standard normal distribution scaled down by 100
 /// by multiplying a random (+/-) value with the previous value
-pub fn generate_standard_normal<R: Rng>(rng: &mut R, length: usize, start_value: f64) -> Vec<f64> {
-    let mut out: Vec<f64> = vec![0.0; length];
+pub fn generate_standard_normal<R, T>(rng: &mut R, length: usize, start_value: T) -> Vec<T>
+where
+    T: Float,
+    R: Rng,
+    StandardNormal: rand_distr::Distribution<T>,
+{
+    let mut out: Vec<T> = vec![T::zero(); length];
 
     out.push(start_value);
-    let mut last_val: f64 = start_value;
+    let mut last_val = start_value;
     for v in out.iter_mut() {
-        let r: f64 = rng.sample(StandardNormal);
-        *v = last_val + (last_val * (r / 100.0));
+        let r: T = rng.sample(StandardNormal);
+        *v = last_val + (last_val * (r / T::from(100.0).expect("can convert")));
         last_val = *v;
     }
 
